@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div class="form-container">
+    <h2>Nhập Công Việc</h2>
+    <form id="jobForm">
+        <label for="day">Ngày:</label>
+        <select id="day" required>
+            <option value="">Chọn ngày</option>
+            <option value="Thứ 2">Thứ 2</option>
+            <option value="Thứ 3">Thứ 3</option>
+            <option value="Thứ 4">Thứ 4</option>
+            <option value="Thứ 5">Thứ 5</option>
+            <option value="Thứ 6">Thứ 6</option>
+            <option value="Thứ 7">Thứ 7</option>
+            <option value="Chủ Nhật">Chủ Nhật</option>
+        </select>
+        <label for="hour">Giờ:</label>
+        <select id="hour" required>
+            <option value="">Chọn giờ</option>
+            <option value="6h">6h</option>
+            <option value="7h">7h</option>
+            <option value="8h">8h</option>
+            <option value="9h">9h</option>
+            <option value="10h">10h</option>
+            <option value="11h">11h</option>
+            <option value="12h">12h</option>
+            <option value="13h">13h</option>
+            <option value="14h">14h</option>
+            <option value="15h">15h</option>
+            <option value="16h">16h</option>
+            <option value="17h">17h</option>
+            <option value="18h">18h</option>
+        </select>
+        <label for="task">Công việc:</label>
+        <input type="text" id="task" required>
+        <button type="submit">Thêm Công Việc</button>
+    </form>
+</div>
+<body>
+<script>
+
+    let time =0;
+    document.getElementById('startTime').addEventListener('change', handleTimeChange);
+    document.getElementById('endTime').addEventListener('change', handleTimeChange);
+
+    function handleTimeChange() {
+        const startTime = document.getElementById('startTime').value;
+        const endTime = document.getElementById('endTime').value;
+
+        console.log("Start Time:", startTime);
+        console.log("End Time:", endTime);
+
+        // Kiểm tra nếu cả hai giá trị đã được chọn
+        if (startTime && endTime) {
+            // Ví dụ: Kiểm tra nếu thời gian bắt đầu sau thời gian kết thúc
+            if (startTime > endTime) {
+                console.log("Start time is after end time. Please select a valid range.");
+            } else {
+                console.log("Time range is valid.");
+            }
+        }
+    }
+</script>
+
+
+
+</body>
+</html>

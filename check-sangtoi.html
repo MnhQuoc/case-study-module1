@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .greeting-notification {
+            width: 300px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border: 1px solid #b0c4de;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #greeting {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="greeting-notification">
+    <div id="greeting"></div>
+</div>
+
+</body>
+<script>
+    function showGreeting() {
+        const now = new Date();
+        const hours = now.getHours();
+        let greetingMessage;
+
+        if (hours < 18 && hours > 6) {
+            greetingMessage = "Chào buổi sáng!";
+        } else {
+            greetingMessage = "Chào buổi tối!";
+        }
+
+        document.getElementById("greeting").innerText = greetingMessage;
+    }
+
+    showGreeting();
+
+</script>
+</html>

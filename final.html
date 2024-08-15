@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--    // link font chữ-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;700&family=Lobster&family=Montserrat:wght@400;700&family=Pacifico&display=swap"
+          rel="stylesheet">
+    <!--    // link icon-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!--    // link bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Thời Khóa Biểu</title>
+    <style>
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-weight: 500; /* Sử dụng trọng lượng mặc định cho font Pacifico */
+            color: #4f88d0; /* Màu sắc tùy chọn phù hợp với thiết kế của bạn */
+            text-align: center; /* Căn giữa văn bản */
+            letter-spacing: 6px; /* Tạo khoảng cách nhỏ giữa các chữ cái */
+        }
+
+        h2 {
+            font-family: 'Pacifico', cursive;
+            font-weight: 400; /* Sử dụng trọng lượng mặc định cho font Pacifico */
+            color: #0FF5E0; /* Màu sắc tùy chọn phù hợp với thiết kế của bạn */
+            text-align: center; /* Căn giữa văn bản */
+            letter-spacing: 4px; /* Tạo khoảng cách nhỏ giữa các chữ cái */
+        }
+
+        h3 {
+            font-family: 'Pacifico', cursive;
+            font-weight: 400; /* Sử dụng trọng lượng mặc định cho font Pacifico */
+            color: #0D706E; /* Màu sắc tùy chọn phù hợp với thiết kế của bạn */
+            text-align: center; /* Căn giữa văn bản */
+            letter-spacing: 2px; /* Tạo khoảng cách nhỏ giữa các chữ cái */
+        }
+
+        /*calender*/
+        .calendar {
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .calendar-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .calendar-header button {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        /* Hiệu ứng khi di chuột qua các ngày */
+        td:hover {
+            background-color: #3f51b5;
+            color: white;
+        }
+
+        /* Ngày hiện tại */
+        .today {
+            background-color: #3f51b5;
+            color: white;
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            width: 100%
+        }
+
+        table {
+            border-collapse: separate; /* Tách đường viền để hoạt động tốt với border-radius */
+            border-spacing: 0; /* Loại bỏ khoảng cách giữa các ô */
+            border-radius: 10px; /* Bo tròn các góc */
+            border: 2px solid #ccc; /* Đường viền ngoài */
+            width: 100%; /* Độ rộng của bảng */
+            margin: 20px auto; /* Căn giữa bảng */
+            overflow: hidden; /* Ẩn nội dung tràn ra ngoài */
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            border-radius: 10px;
+            width: 50%;
+        }
+
+        #timetable {
+            width: 45%;
+        }
+    </style>
+</head>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class='bx bxs-calendar'>Calendar</i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">
+                        <div id="datetime">00:00:00</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">
+                        <div id="buoitoi"></div>
+                        <div id="buoisang"></div>
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class='bx bx-search-alt'></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class='bx bx-support'></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class='bx bx-cog'></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--    //calender-->
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="calendar" style="float: left;width: 22%;height: 25%">
+        <div class="calendar-header">
+            <button>&lt;</button>
+            <h3>August 2024</h3>
+            <button>&gt;</button>
+        </div>
+        <table>
+            <tr>
+                <th>S</th>
+                <th>M</th>
+                <th>T</th>
+                <th>W</th>
+                <th>T</th>
+                <th>F</th>
+                <th>S</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <img src="anh1.jpg" id="logo">
+    </div>
+</nav>
+<body>
+<br>
+<div class="container">
+
+    <div class="form-container">
+        <table border="1" style="width: 500px; height: 300px" id="jobTable">
+            <thead>
+            <tr>
+                <th colspan="2" style="background-color:#CEEFFA"><h3>Thông tin công việc</h3></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th> Chọn ngày</th>
+                <td>
+                    <select id="day">
+                        <option value="">Chọn ngày</option>
+                        <option value="Thứ 2">Thứ 2</option>
+                        <option value="Thứ 3">Thứ 3</option>
+                        <option value="Thứ 4">Thứ 4</option>
+                        <option value="Thứ 5">Thứ 5</option>
+                        <option value="Thứ 6">Thứ 6</option>
+                        <option value="Thứ 7">Thứ 7</option>
+                        <option value="Chủ Nhật">Chủ Nhật</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Thời gian bắt đầu</th>
+                <td>
+                    <select id="startHour">
+                        <option value="">Chọn giờ bắt đầu</option>
+                        <option value="6h">6h</option>
+                        <option value="7h">7h</option>
+                        <option value="8h">8h</option>
+                        <option value="9h">9h</option>
+                        <option value="10h">10h</option>
+                        <option value="11h">11h</option>
+                        <option value="12h">12h</option>
+                        <option value="13h">13h</option>
+                        <option value="14h">14h</option>
+                        <option value="15h">15h</option>
+                        <option value="16h">16h</option>
+                        <option value="17h">17h</option>
+                        <option value="18h">18h</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Thời gian kết thúc</th>
+                <td>
+                    <select id="endHour">
+                        <option value="">Chọn giờ kết thúc</option>
+                        <option value="6h">6h</option>
+                        <option value="7h">7h</option>
+                        <option value="8h">8h</option>
+                        <option value="9h">9h</option>
+                        <option value="10h">10h</option>
+                        <option value="11h">11h</option>
+                        <option value="12h">12h</option>
+                        <option value="13h">13h</option>
+                        <option value="14h">14h</option>
+                        <option value="15h">15h</option>
+                        <option value="16h">16h</option>
+                        <option value="17h">17h</option>
+                        <option value="18h">18h</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Công việc</th>
+                <td><input type="text" id="task" placeholder="Nhập công việc"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="button" class="btn btn-success" id="addTask"><i class='bx bxs-book-add'> Thêm công
+                        việc</i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <table style=" border: 1px solid black; width: 800px; float: right">
+        <thead>
+        <th colspan="8" style="background-color: #0F76F5"><h2> Thời gian biểu </h2></th>
+        </thead>
+        <tbody id="timetable"></tbody>
+    </table>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const table = document.getElementById('timetable');
+        const days = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'];
+        const hours = ['6h', '7h', '8h', '9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h'];
+
+        // Tạo phần tiêu đề của bảng thời khóa biểu
+        let headerRow = '<tr><th>Giờ</th>';
+        for (const day of days) {
+            headerRow += `<th>${day}</th>`;
+        }
+        headerRow += '</tr>';
+        table.innerHTML = headerRow;
+
+        // Tạo các hàng cho từng giờ
+        for (const hour of hours) {
+            let row = `<tr><td>${hour}</td>`;
+            for (const day of days) {
+                row += '<td></td>'; // Thêm ô trống cho mỗi ngày
+            }
+            row += '</tr>';
+            table.innerHTML += row;
+        }
+
+        // Xử lý việc thêm công việc vào bảng
+        document.getElementById('addTask').addEventListener('click', function () {
+            const day = document.getElementById('day').value;
+            const startHour = document.getElementById('startHour').value;
+            const endHour = document.getElementById('endHour').value;
+            const task = document.getElementById('task').value;
+
+            if (day && startHour && endHour && task) {
+                // Tìm chỉ số của ngày và giờ
+                const dayIndex = days.indexOf(day) + 1;
+                const startIndex = hours.indexOf(startHour) + 1;
+                const endIndex = hours.indexOf(endHour) + 1;
+
+                // Cập nhật các ô tương ứng trong bảng
+                for (let i = startIndex; i <= endIndex; i++) {
+                    const cell = table.rows[i].cells[dayIndex];
+                    cell.textContent = task;
+                }
+
+                // Xóa thông tin đã nhập
+                document.getElementById('day').value = '';
+                document.getElementById('startHour').value = '';
+                document.getElementById('endHour').value = '';
+                document.getElementById('task').value = '';
+            }
+        });
+    });
+
+    // return time
+    function updateDateTime() {
+        const now = new Date();
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // Tháng từ 0 đến 11
+        const year = now.getFullYear();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+
+        if (hours < 18 && hours > 6) {
+            document.getElementById('buoisang').innerHTML = "<i class='bx bxs-sun' ></i>";
+        } else {
+            document.getElementById('buoitoi').innerHTML = "<i class='bx bxs-moon' ></i>";
+
+
+        }
+
+        document.getElementById('datetime').textContent = formattedDateTime;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime(); // Call once to set the initial date and time immediately
+    //calender
+    // Lấy ngày hiện tại
+    const today = new Date().getDate();
+
+    // Tìm tất cả các ô ngày trong bảng
+    const days = document.querySelectorAll('td');
+
+    // Duyệt qua các ô và áp dụng class 'today' cho ngày hiện tại
+    days.forEach(day => {
+        if (parseInt(day.innerText) === today) {
+            day.classList.add('today');
+        }
+    });
+
+</script>
+</body>
+</html>

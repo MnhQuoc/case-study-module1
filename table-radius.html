@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table with Rounded Corners</title>
+    <style>
+        .table-container {
+            border-radius: 10px; /* Bo tròn các góc */
+            border: 1px solid #ccc; /* Viền ngoài */
+            overflow: hidden; /* Ẩn nội dung tràn */
+            width: 50%; /* Độ rộng của bảng */
+            margin: 20px auto; /* Căn giữa bảng */
+        }
+
+        table {
+            border-collapse: collapse; /* Đảm bảo các đường viền không bị tách rời */
+            width: 100%; /* Độ rộng của bảng */
+        }
+
+        th, td {
+            border: 1px solid #ccc; /* Đường viền cho các ô */
+            padding: 10px; /* Khoảng cách bên trong các ô */
+            text-align: left; /* Căn lề trái nội dung trong ô */
+        }
+
+        th {
+            background-color: #f4f4f4; /* Màu nền của tiêu đề bảng */
+        }
+
+        td {
+            background-color: #fff; /* Màu nền của các ô dữ liệu */
+        }
+    </style>
+</head>
+<body>
+
+<div class="table-container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+        </tr>
+        <tr>
+            <td>John Doe</td>
+            <td>28</td>
+            <td>New York</td>
+        </tr>
+        <tr>
+            <td>Jane Smith</td>
+            <td>34</td>
+            <td>Los Angeles</td>
+        </tr>
+        <tr>
+            <td>Emily Johnson</td>
+            <td>25</td>
+            <td>Chicago</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

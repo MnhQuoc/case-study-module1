@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thời Khóa Biểu</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<table id="timetable"></table>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const table = document.getElementById('timetable');
+        const days = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'];
+        const hours = ['6h', '7h', '8h', '9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h'];
+
+        // Tạo phần tiêu đề của bảng
+        let headerRow = '<tr><th>Giờ</th>';
+        for (const day of days) {
+            headerRow += `<th>${day}</th>`;
+        }
+        headerRow += '</tr>';
+        table.innerHTML = headerRow;
+
+        // Tạo các hàng cho từng giờ
+        for (const hour of hours) {
+            let row = `<tr><td>${hour}</td>`;
+            for (const day of days) {
+                row += '<td></td>'; // Thêm ô trống cho mỗi ngày
+            }
+            row += '</tr>';
+            table.innerHTML += row;
+        }
+    });
+
+</script>
+</body>
+</html>
